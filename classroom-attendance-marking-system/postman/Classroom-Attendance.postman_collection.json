@@ -1,0 +1,111 @@
+{
+  "info": {
+    "name": "Classroom Attendance Marking System",
+    "_postman_id": "attendance-system-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:7000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Student",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"Test Student\", \"email\": \"test@example.com\", \"rollNumber\": \"TEST001\", \"department\": \"AI&DS\", \"year\": 3, \"section\": \"A\"}"
+        },
+        "url": "{{baseUrl}}/api/students"
+      }
+    },
+    {
+      "name": "Create Subject",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"subjectCode\": \"CS401\", \"subjectName\": \"Software Engineering\", \"facultyName\": \"Dr. Kumar\"}"
+        },
+        "url": "{{baseUrl}}/api/subjects"
+      }
+    },
+    {
+      "name": "Create Past Session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"sessionDate\": \"2026-09-25\", \"startTime\": \"09:00:00\", \"endTime\": \"10:00:00\", \"sessionType\": \"LECTURE\", \"subjectId\": 1}"
+        },
+        "url": "{{baseUrl}}/api/sessions"
+      }
+    },
+    {
+      "name": "Mark Attendance",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"studentId\": 1, \"sessionId\": 1, \"status\": \"PRESENT\", \"remarks\": \"Present in class\"}"
+        },
+        "url": "{{baseUrl}}/api/attendance"
+      }
+    },
+    {
+      "name": "Student Percentage",
+      "request": {
+        "method": "GET"
+      },
+      "url": "{{baseUrl}}/api/attendance/student/1/percentage"
+    },
+    {
+      "name": "Shortage Students",
+      "request": {
+        "method": "GET"
+      },
+      "url": "{{baseUrl}}/api/attendance/shortage"
+    },
+    {
+      "name": "Attendance Filter",
+      "request": {
+        "method": "GET"
+      },
+      "url": "{{baseUrl}}/api/attendance/filter?status=PRESENT"
+    },
+    {
+      "name": "Dashboard",
+      "request": {
+        "method": "GET"
+      },
+      "url": "{{baseUrl}}/api/dashboard"
+    }
+  ]
+}

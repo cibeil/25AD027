@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom Attendance Marking System</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div>
+            <p class="eyebrow">SMART CLASSROOM</p>
+            <h1>Attendance Dashboard</h1>
+            <p>Classroom Attendance Marking System</p>
+        </div>
+        <button onclick="loadDashboard()">Refresh</button>
+    </header>
+
+    <section class="cards" id="cards"></section>
+
+    <section class="panel">
+        <div class="panel-head">
+            <h2>Attendance Records</h2>
+            <div>
+                <input type="date" id="dateFilter">
+                <select id="statusFilter">
+                    <option value="">All Status</option>
+                    <option value="PRESENT">Present</option>
+                    <option value="ABSENT">Absent</option>
+                </select>
+                <button onclick="loadAttendance()">Filter</button>
+            </div>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr><th>Student</th><th>Roll No.</th><th>Subject</th><th>Date</th><th>Status</th><th>Remarks</th></tr>
+                </thead>
+                <tbody id="attendanceBody"></tbody>
+            </table>
+        </div>
+    </section>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
